@@ -1,9 +1,8 @@
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const fs = require('fs')
-const { count } = require('console')
 
-operation();
+operation()
 
 function operation(){
     inquirer.prompt([
@@ -42,8 +41,6 @@ function createAccount(){
     console.log(chalk.green('Vamos criar sua conta agora...'))
 
     buildAccount()
-
-
 }
 
 function buildAccount(){
@@ -73,7 +70,7 @@ function buildAccount(){
 
         fs.writeFileSync(
             `accounts/${accountName}.json`,
-            `{"balance": 0 , "limit": 2000}`,
+            `{"balance":0 , "limit": 2000}`,
             function(err){
                 console.error(err)
             }
@@ -207,27 +204,25 @@ function removeAmount(accountName, amount){
 function getAccountBalance(){
     inquirer.prompt([
         {
-            name: 'accountName',
+            name:'accountName',
             message: 'Qual conta deseja olhar o saldo?'
         }
     ]).then((answer) =>{
         const accountName = answer['accountName']
 
-        if (!checkAccount(accountName)){
+        if(!checkAccount(accountName)){
             return getAccountBalance()
         }
 
         const accountData = getAccount(accountName)
-
-        console.info(chalk.bgGreen.black(`------ | SALDO DA CONTA: ${accountName} | ------`))
-
-        if(accountData.balance < 0) {
-            console.info(chalk.bgWhite.red(`------ | SALDO DA CONTA: ${accountData.balance} | ------`))
-            console.info(chalk.bgRed.black(`------ | ESPECIAL: R$ ${accountData.limit + accountData.balance} | ------`))
-        } else {
-            console.info(chalk.bgGreen.red(`------ | SALDO DA CONTA: ${accountData.balance} | ------`))
-            console.info(chalk.bgBlue.white(`------ | ESPECIAL: R$ ${accountData.limit} | -------`))
+        console.info(chalk.bgGreen.black(`| NOME DA CONTA: ${accountName}|`))
+        if(accountData.balance < 0){
+            console.info(chalk.bgWhite.red(`| SALDO: R$ ${accountData.balance}|`))
+            console.info(chalk.bgRed.black(`| ESPECIAL: R$ ${accountData.limit  + accountData.balance}|`)) 
+        }else{
+            console.info(chalk.bgGreen.red(`| SALDO: R$ ${accountData.balance}|`))
+            console.info(chalk.bgBlue.white(`| ESPECIAL: R$ ${accountData.limit}|`)) 
         }
         operation()
-})
+  })
 }

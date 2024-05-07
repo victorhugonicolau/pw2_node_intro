@@ -1,31 +1,24 @@
- module.exports = {
+module.exports = {
     calculadora(n1, n2, op) {
         switch (op) {
-            case "+":
-                return ((` ${n1} ${op} ${n2} = ${(n1 + n2)}    `))
-                break;
-            case "-":
-                return ((` ${n1} ${op} ${n2} = ${(n1 - n2)}     `))
-                break;
-            case "*":
-                return ((` ${n1} ${op} ${n2} = ${(n1 * n2)}       `))
-                break;
-            case "/":
-                return ((` ${n1} ${op} ${n2} = ${(n1 / n2)}  `))
-                break;
+            case '+':
+                return (`${n1} ${op} ${n2} = ${(n1 + n2)}`)
+            case '-':
+                return (`${n1} ${op} ${n2} = ${(n1 - n2)}`)
+            case '/':
+                return (`${n1} ${op} ${n2} = ${(n1 / n2)}`)
+            case '*':
+                return (`${n1} ${op} ${n2} = ${(n1 * n2)}`)
             default:
-                return ((` Operação Invalida `))
-                break
+                return (`Invalid Operation`)
         }
-    
     },
-    cientifica(n1,n2,op) {
-        switch(op){
+    cientifica(n1, n2, op){
+        switch (op){
             case "sr":
-                return(`Raiz quadrada: ${n1} + ${n2} = ${Math.sqrt(n1+n2)}`)
-                default:
-                    return(`Invalida Operation`)
+                return(`Raiz Quadrada: ${n1} + ${n2} = ${Math.sqrt(n1+n2)}`)
+            default:
+                return(`Invalid Operation`)
         }
     }
- }
- 
+}
