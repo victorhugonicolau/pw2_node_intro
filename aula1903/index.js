@@ -2,36 +2,35 @@ const inquirer = require('inquirer')
 const chalk = require('chalk')
 const fs = require('fs')
 
-operation();
+operation()
 
-function operation() {
+function operation(){
     inquirer.prompt([
-    {
-        type: 'list',
-        name: 'action',
-        message: 'O que vocÃª deseja fazer?!',
-        choices:[
-            'Criar a conta',
-            'Consultar o saldo',
-            'Depositar',
-            'Sacar',
-            'Sair'
-        ]
-    }
-
+        {
+            type:'list',
+            name:'action',
+            message: 'O que você deseja fazer?',
+            choices:[
+                'Criar conta',
+                'Consultar saldo',
+                'Depositar',
+                'Sacar',
+                'Sair'
+            ]
+        }
     ]).then((answer) => {
         const action = answer['action']
 
-        if (action === 'Criar a conta') {
+        if(action === 'Criar conta'){
             createAccount()
-        } else if (action === 'Consultar o saldo') {
+        }else if(action === 'Consultar saldo'){
             getAccountBalance()
-        } else if (action === 'Depositar') {
+        }else if(action === 'Depositar'){
             deposit()
-        } else if (action === 'Sacar') {
+        }else if(action === 'Sacar'){
             withdraw()
-        }else if (action === 'Sair') {
-            console.log(chalk.bgBlue.black('Obrigado por usar o Accounts Node'))
+        }else if(action === 'Sair'){
+            console.log(chalk.bgBlue.black('Obrigado por usar o Accounts Node!'))
             process.exit()
         }
     })

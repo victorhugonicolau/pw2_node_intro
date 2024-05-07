@@ -1,9 +1,8 @@
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const fs = require('fs')
-const { count } = require('console')
 
-operation();
+operation()
 
 function operation(){
     inquirer.prompt([
@@ -205,22 +204,19 @@ function removeAmount(accountName, amount){
 function getAccountBalance(){
     inquirer.prompt([
         {
-            name: 'accountName',
+            name:'accountName',
             message: 'Qual conta deseja olhar o saldo?'
         }
     ]).then((answer) =>{
         const accountName = answer['accountName']
 
-        if (!checkAccount(accountName)){
+        if(!checkAccount(accountName)){
             return getAccountBalance()
         }
 
         const accountData = getAccount(accountName)
-
-        console.info(chalk.bgGreen.black(`------ -------------------------------- ------`))
-        console.info(chalk.bgGreen.black(`------ | SLADO DA CONTA: ${accountName} | ------`))
-        console.info(chalk.bgGreen.black(`------ | SLADO: R$ ${accountData.balance} | ------`))
-        console.info(chalk.bgGreen.black(`------ -------------------------------- ------`))
+        console.info(chalk.bgGreen.black(`| SALDO DA CONTA: ${accountName}|`))
+        console.info(chalk.bgGreen.black(`| SALDO: R$ ${accountData.balance}|`))
         operation()
-})
+  })
 }
