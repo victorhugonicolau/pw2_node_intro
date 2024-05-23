@@ -10,7 +10,7 @@ const User = db.define('User', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    passord:{
+    passowrd:{
         type: DataTypes.STRING,
         allowNull: false
     },
